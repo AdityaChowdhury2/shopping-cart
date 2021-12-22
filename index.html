@@ -79,49 +79,78 @@
       </div>
    </section>
    <script>
-      //Handle Plus Button Click Event
-      function addItem(buttonId, valueId, priceId) {
-         const incrementBtn = document.getElementById(buttonId);
-         incrementBtn.addEventListener('click', function () {
-            let count = document.getElementById(valueId).value;
-            let countNumber = parseFloat(count);
-            countNumber++;
-            let price = document.getElementById(priceId).innerText;
-            let priceNumber = parseFloat(price);
-            if (priceId == 'price1') {
-               priceNumber = 1219 * countNumber;
-            }
-            else {
-               priceNumber = 59 * countNumber;
-            }
-            document.getElementById(priceId).innerText = priceNumber;
-            document.getElementById(valueId).value = countNumber;
-         })
+      //Handle Plus and Minus Button Click Event
+      const incrementBtn1 = document.getElementById('incrementBtn1');
+      incrementBtn1.addEventListener('click', function () {
+         quantityHandler("quantityOfItem1", "price1", "increment")
+      })
+      const incrementBtn2 = document.getElementById('incrementBtn2');
+      incrementBtn2.addEventListener('click', function () {
+         quantityHandler("quantityOfItem2", "price2", "increment")
+      })
+      const decrementBtn1 = document.getElementById('decrementBtn1');
+      decrementBtn1.addEventListener('click', function () {
+         quantityHandler("quantityOfItem1", "price1", "decrement")
+      })
+      const decrementBtn2 = document.getElementById('decrementBtn2');
+      decrementBtn2.addEventListener('click', function () {
+         quantityHandler("quantityOfItem2", "price2", "decrement")
+      })
+      function quantityHandler(valueId, priceId, type) {
+         let itemQuantity = document.getElementById(valueId).value;
+         let itemQuantityNumber = parseFloat(itemQuantity);
+         let newItemQuantity = type == "increment" ? itemQuantityNumber + 1 : itemQuantityNumber - 1;
+         let price = document.getElementById(priceId).innerText;
+         let priceNumber = parseFloat(price);
+         let originalPrice = priceNumber / itemQuantityNumber;
+         let updatedPrice = originalPrice * newItemQuantity;
+         // console.log(originalPrice);
+         document.getElementById(valueId).value = newItemQuantity;
+         document.getElementById(priceId).innerText = updatedPrice;
       }
-      addItem('incrementBtn1', 'quantityOfItem1', 'price1');
-      addItem('incrementBtn2', 'quantityOfItem2', 'price2');
+
+      // function addItem(buttonId, valueId, priceId) {
+      //    const incrementBtn = document.getElementById(buttonId);
+      //    incrementBtn.addEventListener('click', function () {
+      //       let count = document.getElementById(valueId).value;
+      //       let countNumber = parseFloat(count);
+      //       countNumber++;
+      //       let price = document.getElementById(priceId).innerText;
+      //       let priceNumber = parseFloat(price);
+      //       if (priceId == 'price1') {
+      //          priceNumber = 1219 * countNumber;
+      //       }
+      //       else {
+      //          priceNumber = 59 * countNumber;
+      //       }
+      //       document.getElementById(priceId).innerText = priceNumber;
+      //       document.getElementById(valueId).value = countNumber;
+      //    })
+      // }
+      // addItem('incrementBtn1', 'quantityOfItem1', 'price1');
+      // addItem('incrementBtn2', 'quantityOfItem2', 'price2');
 
       //Handle Minus Button Click Event
-      function deleteItem(buttonId, valueId, priceId) {
-         const decrementBtn = document.getElementById(buttonId);
-         decrementBtn.addEventListener('click', function () {
-            let count = document.getElementById(valueId).value;
-            let countNumber = parseFloat(count);
-            countNumber--;
-            let price = document.getElementById(priceId).innerText;
-            let priceNumber = parseFloat(price);
-            if (priceId == 'price1') {
-               priceNumber = priceNumber - 1219;
-            }
-            else {
-               priceNumber = priceNumber - 59;
-            }
-            document.getElementById(priceId).innerText = priceNumber;
-            document.getElementById(valueId).value = countNumber;
-         })
-      }
-      deleteItem('decrementBtn1', "quantityOfItem1", 'price1');
-      deleteItem('decrementBtn2', "quantityOfItem2", 'price2');
+      // function deleteItem(buttonId, valueId, priceId) {
+      //    const decrementBtn = document.getElementById(buttonId);
+      //    decrementBtn.addEventListener('click', function () {
+      //       let count = document.getElementById(valueId).value;
+      //       let countNumber = parseFloat(count);
+      //       countNumber--;
+      //       let price = document.getElementById(priceId).innerText;
+      //       let priceNumber = parseFloat(price);
+      //       if (priceId == 'price1') {
+      //          priceNumber = priceNumber - 1219;
+      //       }
+      //       else {
+      //          priceNumber = priceNumber - 59;
+      //       }
+      //       document.getElementById(priceId).innerText = priceNumber;
+      //       document.getElementById(valueId).value = countNumber;
+      //    })
+      // }
+      // deleteItem('decrementBtn1', "quantityOfItem1", 'price1');
+      // deleteItem('decrementBtn2', "quantityOfItem2", 'price2');
 
    </script>
 </body>
