@@ -138,6 +138,11 @@
             document.getElementById(valueId).value = newItemQuantity;
             document.getElementById(priceId).innerText = updatedPrice;
          }
+         // if item quantity number = 0 then delete item from cart
+         else{
+            let itemId = document.getElementById(priceId).parentElement.parentElement.parentElement.parentElement.id;
+            itemRemoveInCart(itemId,priceId);
+         }
          updateTotal();
       }
       updateTotal();
