@@ -14,7 +14,7 @@
 
    <section>
       <div class="container">
-         <div class="cart">
+         <div class = "cart" id = 'cart'>
             <div class="col-md-12 col-lg-10 mx-auto">
                <div id="item1" class="cart-item">
                   <div class="row">
@@ -72,11 +72,37 @@
                   </div>
                </div>
                <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
+                  <button id="checkOutBtn" type="button" class="btn btn-success custom-btn">Check Out</button>
                </div>
             </div>
          </div>
+         <div id="customer-details" class="customer-details px-5">
+            <h2 class="text-center">Fill Customer Details</h2>
+            <form>               
+               <div class="form-group">
+                  <label for="exampleInputName">Name</label>
+                  <input type="text" class="form-control" id="exampleInputName" placeholder="Enter Full Name" required>
+               </div>
+               <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Email Address" aria-describedby="emailHelp" required>
+               </div>
+               <div class="form-group">
+                  <label for="exampleInputPhone">Phone</label>
+                  <input type="tel" class="form-control" id="exampleInputPhone" placeholder="Enter Phone Number" pattern="[0-9]{10}" required>
+               </div>
+               <div class="form-group">
+                  <label for="exampleInputPresentAddress">Present Address</label>
+                  <input type="text" class="form-control" id="exampleInputPresentAddress" placeholder="Enter Present Address" required>
+               </div>
+               <button type="submit" class="btn btn-success custom-btn">Submit & Confirm</button>
+             </form>
+         </div>
       </div>
+   </section>
+
+
+
    </section>
    <script>
       //Handle Plus and Minus Button Click Event
@@ -97,14 +123,21 @@
          quantityHandler("quantityOfItem2", "price2", "decrement")
       })
       const removeItem1 = document.getElementById('removeItem1');
-      removeItem1.addEventListener('click',function(){
-         itemRemoveInCart("item1","price1");
+      removeItem1.addEventListener('click', function () {
+         itemRemoveInCart("item1", "price1");
       })
       const removeItem2 = document.getElementById('removeItem2');
-      removeItem2.addEventListener('click',function(){
-         itemRemoveInCart("item2","price2");
+      removeItem2.addEventListener('click', function () {
+         itemRemoveInCart("item2", "price2");
       })
-      function itemRemoveInCart(itemId,priceId){
+      const checkOut = document.getElementById('checkOutBtn');
+      checkOut.addEventListener('click',function(){
+         const cartArea = document.getElementById('cart');
+         cartArea.style.display = "none";
+         const customerDetailsArea = document.getElementById('customer-details');
+         customerDetailsArea.style.display = "block";
+      })
+      function itemRemoveInCart(itemId, priceId) {
          document.getElementById(itemId).style.display = 'none';
          document.getElementById(priceId).innerText = 0;
          updateTotal();
@@ -120,7 +153,7 @@
 
          let totalPrice = tax + subtotalPrice;
          totalPrice = parseFloat(totalPrice).toFixed(2);
-      
+
          document.getElementById('subtotal').innerText = subtotalPrice;
          document.getElementById('tax').innerText = tax;
          document.getElementById('total').innerText = totalPrice;
@@ -129,7 +162,7 @@
          let itemQuantity = document.getElementById(valueId).value;
          let itemQuantityNumber = parseFloat(itemQuantity);
          let newItemQuantity = type == "increment" ? itemQuantityNumber + 1 : itemQuantityNumber - 1;
-         if(newItemQuantity>=1){
+         if (newItemQuantity >= 1) {
             let price = document.getElementById(priceId).innerText;
             let priceNumber = parseFloat(price);
             let originalPrice = priceNumber / itemQuantityNumber;
@@ -139,9 +172,9 @@
             document.getElementById(priceId).innerText = updatedPrice;
          }
          // if item quantity number = 0 then delete item from cart
-         else{
+         else {
             let itemId = document.getElementById(priceId).parentElement.parentElement.parentElement.parentElement.id;
-            itemRemoveInCart(itemId,priceId);
+            itemRemoveInCart(itemId, priceId);
          }
          updateTotal();
       }

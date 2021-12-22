@@ -1,10 +1,13 @@
 body{
 	background: #fff;
 }
-.cart{
+.cart, .customer-details{
 	margin: 100px 0;
 	background-color: #F6F5FA;;
 	padding: 60px 0;
+}
+#customer-details{
+	display: none;
 }
 .total-price{
 	padding-bottom: 15px;
@@ -47,7 +50,7 @@ body{
 .status{
 	text-align: right;
 }
-.check-out{
+.custom-btn{
     float: right;
     padding: 10px 30px;
 	font-size: 19px;
