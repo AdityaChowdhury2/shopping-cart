@@ -14,13 +14,13 @@
 
    <section>
       <div class="container">
-         <div class = "cart" id = 'cart'>
+         <div class = "cart d-none">
             <div class="col-md-12 col-lg-10 mx-auto">
                <div id="item1" class="cart-item">
                   <div class="row">
                      <div class="col-md-7 center-item">
                         <img src="images/product-1.png" alt="">
-                        <h5>iPhone 11 128GB Black</h5>
+                        <h5 id="itemName1">iPhone 11 128GB Black</h5>
                      </div>
 
                      <div class="col-md-5 center-item">
@@ -39,7 +39,7 @@
                   <div class="row">
                      <div class="col-md-7 center-item mx-auto">
                         <img src="images/product-2.png" alt="">
-                        <h5>iPhone 11 Silicone Case - Black</h5>
+                        <h5 id="itemName2">iPhone 11 Silicone Case - Black</h5>
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
@@ -76,9 +76,9 @@
                </div>
             </div>
          </div>
-         <div id="customer-details" class="customer-details px-5">
-            <h2 class="text-center">Fill Customer Details</h2>
-            <form>               
+         <div class="customer-details d-none">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <h2 class="text-center">Fill Customer Details</h2>              
                <div class="form-group">
                   <label for="exampleInputName">Name</label>
                   <input type="text" class="form-control" id="exampleInputName" placeholder="Enter Full Name" required>
@@ -95,8 +95,77 @@
                   <label for="exampleInputPresentAddress">Present Address</label>
                   <input type="text" class="form-control" id="exampleInputPresentAddress" placeholder="Enter Present Address" required>
                </div>
-               <button type="submit" class="btn btn-success custom-btn">Submit & Confirm</button>
-             </form>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button id="confirmBtn" type="submit" class="btn btn-success custom-btn">Submit & Confirm</button>
+               </div>
+            </div>
+         </div>
+         <div id="invoice-details" class="invoice-details">
+            <div class="col-md-12 mx-auto p-5">
+               <div class="text-center ">
+                  <h2 class="text-success invoice-title">Your Order is Confirmed</h2>
+                  <h5 class="invoice-title">Order Details</h5>
+               </div>
+               <hr>
+               <div class="customer-details">
+                  <h5>Customer Name : <span class="text-secondary" id="display-name"></span></h5>
+                  <h5>Customer Email : <span class="text-secondary" id="display-email"></span></h5>
+                  <h5>Customer Phone No: <span class="text-secondary" id="display-phone"></span></h5>
+                  <h5>Customer Address : <span class="text-secondary" id="display-address"></span></h5>
+               </div>
+               <div class="card">
+                  <div class="card-header text-center font-weight-bold">
+                     Order Summary
+                  </div>
+                  <div class="card-body">
+                     <div class="table-responsive">
+                        <table class="table table-sm">
+                           <thead>
+                              <tr>
+                                 <th>No.</th>
+                                 <th>Item</th>
+                                 <th class="text-center">Price</th>
+                                 <th class="text-center">Quantity</th>
+                                 <th class="text-right">Total</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <th>1</th>
+                                 <td id="invoice-item1-name">iPhone 11 128GB Black</td>
+                                 <td class="text-center">$<span id="invoice-item1-price">0</span></td>
+                                 <td class="text-center"><span id="invoice-item1-quantity">0</span></td>
+                                 <td class="text-right">$<span id="invoice-item1-total">0</span></td>
+                              </tr>
+                              <tr>
+                                 <th>2</th>
+                                 <td id="invoice-item2-name">iPhone 11 Silicone Case - Black</td>
+                                 <td class="text-center">$<span id="invoice-item2-price">0</span></td>
+                                 <td class="text-center"><span id="invoice-item2-quantity">0</span></td>
+                                 <td class="text-right">$<span id="invoice-item2-total">0</span></td>
+                              </tr>
+                              <tr>
+                                 <td colspan="3"></td>
+                                 <th class="text-center">Subtotal</th>
+                                 <td class="text-right">$ <span id="invoice-subtotal">0</span></td>
+                              </tr>
+                              <tr>
+                                 <td colspan="3"></td>
+                                 <th class="text-center">Tax</th>
+                                 <td class="text-right">$ <span id="invoice-subtotal">0</span></td>
+                              </tr>
+                              <tr>
+                                 <td colspan="3"></td>
+                                 <th class="text-center">Total</th>
+                                 <td class="text-right">$ <span id="invoice-subtotal">0</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               
+            </div>
          </div>
       </div>
    </section>
@@ -104,82 +173,8 @@
 
 
    </section>
+   <script src="script.js"></script>
    <script>
-      //Handle Plus and Minus Button Click Event
-      const incrementBtn1 = document.getElementById('incrementBtn1');
-      incrementBtn1.addEventListener('click', function () {
-         quantityHandler("quantityOfItem1", "price1", "increment")
-      })
-      const incrementBtn2 = document.getElementById('incrementBtn2');
-      incrementBtn2.addEventListener('click', function () {
-         quantityHandler("quantityOfItem2", "price2", "increment")
-      })
-      const decrementBtn1 = document.getElementById('decrementBtn1');
-      decrementBtn1.addEventListener('click', function () {
-         quantityHandler("quantityOfItem1", "price1", "decrement")
-      })
-      const decrementBtn2 = document.getElementById('decrementBtn2');
-      decrementBtn2.addEventListener('click', function () {
-         quantityHandler("quantityOfItem2", "price2", "decrement")
-      })
-      const removeItem1 = document.getElementById('removeItem1');
-      removeItem1.addEventListener('click', function () {
-         itemRemoveInCart("item1", "price1");
-      })
-      const removeItem2 = document.getElementById('removeItem2');
-      removeItem2.addEventListener('click', function () {
-         itemRemoveInCart("item2", "price2");
-      })
-      const checkOut = document.getElementById('checkOutBtn');
-      checkOut.addEventListener('click',function(){
-         const cartArea = document.getElementById('cart');
-         cartArea.style.display = "none";
-         const customerDetailsArea = document.getElementById('customer-details');
-         customerDetailsArea.style.display = "block";
-      })
-      function itemRemoveInCart(itemId, priceId) {
-         document.getElementById(itemId).style.display = 'none';
-         document.getElementById(priceId).innerText = 0;
-         updateTotal();
-      }
-      // total update function
-      function updateTotal() {
-         let price1 = document.getElementById('price1').innerText;
-         let price2 = document.getElementById('price2').innerText;
-         let subtotalPrice = parseFloat(price1) + parseFloat(price2);
-
-         //adding 9% tax
-         let tax = subtotalPrice * 9 / 100;
-
-         let totalPrice = tax + subtotalPrice;
-         totalPrice = parseFloat(totalPrice).toFixed(2);
-
-         document.getElementById('subtotal').innerText = subtotalPrice;
-         document.getElementById('tax').innerText = tax;
-         document.getElementById('total').innerText = totalPrice;
-      }
-      function quantityHandler(valueId, priceId, type) {
-         let itemQuantity = document.getElementById(valueId).value;
-         let itemQuantityNumber = parseFloat(itemQuantity);
-         let newItemQuantity = type == "increment" ? itemQuantityNumber + 1 : itemQuantityNumber - 1;
-         if (newItemQuantity >= 1) {
-            let price = document.getElementById(priceId).innerText;
-            let priceNumber = parseFloat(price);
-            let originalPrice = priceNumber / itemQuantityNumber;
-            let updatedPrice = originalPrice * newItemQuantity;
-            // console.log(originalPrice);
-            document.getElementById(valueId).value = newItemQuantity;
-            document.getElementById(priceId).innerText = updatedPrice;
-         }
-         // if item quantity number = 0 then delete item from cart
-         else {
-            let itemId = document.getElementById(priceId).parentElement.parentElement.parentElement.parentElement.id;
-            itemRemoveInCart(itemId, priceId);
-         }
-         updateTotal();
-      }
-      updateTotal();
-
       // function addItem(buttonId, valueId, priceId) {
       //    const incrementBtn = document.getElementById(buttonId);
       //    incrementBtn.addEventListener('click', function () {

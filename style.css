@@ -1,14 +1,12 @@
 body{
 	background: #fff;
 }
-.cart, .customer-details{
+.cart, .customer-details ,.invoice-details{
 	margin: 100px 0;
 	background-color: #F6F5FA;;
 	padding: 60px 0;
 }
-#customer-details{
-	display: none;
-}
+
 .total-price{
 	padding-bottom: 15px;
 }
@@ -56,4 +54,7 @@ body{
 	font-size: 19px;
 	background-color: #2FBE70;
 	border: none;
+}
+.invoice-title{
+	font-weight: 600;
 }
