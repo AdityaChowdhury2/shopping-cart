@@ -14,7 +14,7 @@
 
    <section id="cart">
       <div class="container">
-         <div class = "cart">
+         <div class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
                <div id="item1" class="cart-item">
                   <div class="row">
@@ -80,24 +80,27 @@
    </section>
    <section id="customer-details" class="d-none">
       <div class="container">
-         <div class="customer-details" id="customer-details">
-            <div class="col-md-12 col-lg-10 mx-auto">
-               <h2 class="text-center">Fill Customer Details</h2>              
+         <div class="customer-details bg-light my-5" id="customer-details">
+            <div class="col-md-12 col-lg-10 mx-auto p-5">
+               <h2 class="text-center">Fill Customer Details</h2>
                <div class="form-group">
                   <label for="exampleInputName">Name</label>
                   <input type="text" class="form-control" id="exampleInputName" placeholder="Enter Full Name" required>
                </div>
                <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Email Address" aria-describedby="emailHelp" required>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Email Address"
+                     aria-describedby="emailHelp" required>
                </div>
                <div class="form-group">
                   <label for="exampleInputPhone">Phone</label>
-                  <input type="tel" class="form-control" id="exampleInputPhone" placeholder="Enter Phone Number" pattern="[0-9]{10}" required>
+                  <input type="tel" class="form-control" id="exampleInputPhone" placeholder="Enter Phone Number"
+                     pattern="[0-9]{10}" required>
                </div>
                <div class="form-group">
                   <label for="exampleInputPresentAddress">Present Address</label>
-                  <input type="text" class="form-control" id="exampleInputPresentAddress" placeholder="Enter Present Address" required>
+                  <input type="text" class="form-control" id="exampleInputPresentAddress"
+                     placeholder="Enter Present Address" required>
                </div>
                <div class="col-md-12 pt-4 pb-4">
                   <button id="confirmBtn" type="submit" class="btn btn-success custom-btn">Submit & Confirm</button>
@@ -108,8 +111,8 @@
    </section>
 
    <section id="invoice-details" class="d-none">
-      <div class="container">
-         <div class="invoice-details">
+      <div class="container ">
+         <div class="invoice-details bg-light my-5">
             <div class="col-md-12 mx-auto p-5">
                <div class="text-center ">
                   <h2 class="text-success invoice-title">Your Order is Confirmed</h2>
@@ -139,14 +142,14 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <tr>
+                              <tr id="invoice-item1">
                                  <th>1</th>
                                  <td id="invoice-item1-name"></td>
                                  <td class="text-center">$<span id="invoice-item1-price">0</span></td>
                                  <td class="text-center"><span id="invoice-item1-quantity">0</span></td>
                                  <td class="text-right">$<span id="invoice-item1-total">0</span></td>
                               </tr>
-                              <tr>
+                              <tr id="invoice-item2">
                                  <th>2</th>
                                  <td id="invoice-item2-name"></td>
                                  <td class="text-center">$<span id="invoice-item2-price">0</span></td>
@@ -177,7 +180,7 @@
          </div>
       </div>
    </section>
-      </div>
+   </div>
    </section>
 
 

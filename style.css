@@ -1,7 +1,7 @@
 body{
 	background: #fff;
 }
-.cart, .customer-details ,.invoice-details{
+.cart {
 	margin: 100px 0;
 	background-color: #F6F5FA;;
 	padding: 60px 0;
