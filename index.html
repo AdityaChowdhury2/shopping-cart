@@ -12,9 +12,9 @@
 
 <body>
 
-   <section>
+   <section id="cart">
       <div class="container">
-         <div class = "cart d-none">
+         <div class = "cart">
             <div class="col-md-12 col-lg-10 mx-auto">
                <div id="item1" class="cart-item">
                   <div class="row">
@@ -76,7 +76,11 @@
                </div>
             </div>
          </div>
-         <div class="customer-details d-none">
+      </div>
+   </section>
+   <section id="customer-details" class="d-none">
+      <div class="container">
+         <div class="customer-details" id="customer-details">
             <div class="col-md-12 col-lg-10 mx-auto">
                <h2 class="text-center">Fill Customer Details</h2>              
                <div class="form-group">
@@ -100,7 +104,12 @@
                </div>
             </div>
          </div>
-         <div id="invoice-details" class="invoice-details">
+      </div>
+   </section>
+
+   <section id="invoice-details" class="d-none">
+      <div class="container">
+         <div class="invoice-details">
             <div class="col-md-12 mx-auto p-5">
                <div class="text-center ">
                   <h2 class="text-success invoice-title">Your Order is Confirmed</h2>
@@ -132,14 +141,14 @@
                            <tbody>
                               <tr>
                                  <th>1</th>
-                                 <td id="invoice-item1-name">iPhone 11 128GB Black</td>
+                                 <td id="invoice-item1-name"></td>
                                  <td class="text-center">$<span id="invoice-item1-price">0</span></td>
                                  <td class="text-center"><span id="invoice-item1-quantity">0</span></td>
                                  <td class="text-right">$<span id="invoice-item1-total">0</span></td>
                               </tr>
                               <tr>
                                  <th>2</th>
-                                 <td id="invoice-item2-name">iPhone 11 Silicone Case - Black</td>
+                                 <td id="invoice-item2-name"></td>
                                  <td class="text-center">$<span id="invoice-item2-price">0</span></td>
                                  <td class="text-center"><span id="invoice-item2-quantity">0</span></td>
                                  <td class="text-right">$<span id="invoice-item2-total">0</span></td>
@@ -152,21 +161,22 @@
                               <tr>
                                  <td colspan="3"></td>
                                  <th class="text-center">Tax</th>
-                                 <td class="text-right">$ <span id="invoice-subtotal">0</span></td>
+                                 <td class="text-right">$ <span id="invoice-tax">0</span></td>
                               </tr>
                               <tr>
                                  <td colspan="3"></td>
                                  <th class="text-center">Total</th>
-                                 <td class="text-right">$ <span id="invoice-subtotal">0</span></td>
+                                 <td class="text-right">$ <span id="invoice-total">0</span></td>
                               </tr>
                            </tbody>
                         </table>
                      </div>
                   </div>
                </div>
-               
             </div>
          </div>
+      </div>
+   </section>
       </div>
    </section>
 
